@@ -1,0 +1,30 @@
+{
+  "name": "node-simple-crud",
+  "version": "1.0.0",
+  "description": "Simple crud with NodeJS and MongoDB",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JhonathanMusa/node-simple-crud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JhonathanMusa/node-simple-crud/issues"
+  },
+  "homepage": "https://github.com/JhonathanMusa/node-simple-crud#readme"
+}
