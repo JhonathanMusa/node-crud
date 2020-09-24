@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <%- include ("../partials/head")%>
+  </head>
+  <body>
+    <body>
+        <ul class="list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/view">View Users</a></li>
+          <li style="float: right"><a href="/about">About</a></li>
+        </ul>
+        <h1>View Users</h1>
+
+        <form action="/view" method="POST">
+                <input class="input-user" type="text" name="user" placeholder="Name" />
+                <input id="btn-register" type="submit" value="search" />
+        </form>
+  </body>
+</html>

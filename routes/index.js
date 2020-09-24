@@ -9,6 +9,10 @@ router.get("/users", (req, res) => {
   res.render("pages/users.ejs");
 });
 
+router.get("/view", (req, res) => {
+  res.render("pages/view.ejs");
+});
+
 router.get("/about", (req, res) => {
   res.render("pages/about.ejs");
 });
