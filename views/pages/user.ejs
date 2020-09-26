@@ -9,13 +9,13 @@
   <body>
     <ul class="list">
       <li><a href="/">Home</a></li>
-      <li><a href="/users">Users</a></li>
+      <li><a href="/user">Users</a></li>
       <li><a href="/view">View Users</a></li>
       <li style="float: right"><a href="/about">About</a></li>
     </ul>
     <h1>Users</h1>
 
-    <form action="/users" method="POST">
+    <form action="/user" method="POST">
       <input class="input-user" type="text" name="name" placeholder="Name" />
       <input
         class="input-user"
@@ -23,7 +23,7 @@
         name="password"
         placeholder="Password"
       />
-      <input id="btn-register" type="submit" name="submit" value="Register" />
+      <button id="btn-register" type="submit" name="submit">Register</button>
     </form>
   </body>
 </html>

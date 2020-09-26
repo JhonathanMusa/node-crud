@@ -1,26 +1,25 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
+const Mongodb = require("mongodb");
 const url = "mongodb://localhost:27017";
-const dbName = "EjemploDB2";
 
-MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+Mongodb.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((user) => {
     console.log("Database Connected");
-    const db = user.db(dbName);
+    const db = user.db("EjemploDB2");
     const companyCollection = db.collection("users");
 
-    app.use(bodyParser.urlencoded({ extended: false }));
     app.set("view engine", "ejs");
+    app.use(bodyParser.urlencoded({ extended: false }));
 
     app.use(require("./routes/index"));
 
-    app.post("/users", (req, res) => {
+    app.post("/user", (req, res) => {
       companyCollection
         .insertOne(req.body)
         .then((result) => {
-          res.redirect("/users");
+          res.redirect("/user");
         })
         .catch((error) => console.error(error));
     });
@@ -34,8 +33,8 @@ MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
       });
     });
 
-    app.listen(3000, () => {
-      console.log("Server running on port 3000");
+    app.listen(8080, () => {
+      console.log("Server running on port 8080");
     });
   })
   .catch((error) => console.error(error));
