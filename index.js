@@ -10,8 +10,8 @@ Mongodb.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     const db = user.db("EjemploDB2");
     const companyCollection = db.collection("users");
 
-    app.set("view engine", "ejs");
     app.use(bodyParser.urlencoded({ extended: false }));
+    app.set("view engine", "ejs");
 
     app.use(require("./routes/index"));
 
