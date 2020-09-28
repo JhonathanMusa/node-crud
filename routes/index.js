@@ -17,4 +17,7 @@ router.get("/about", (req, res) => {
   res.render("pages/about");
 });
 
+router.get("/delete", (req, res) => {
+  res.render("pages/delete");
+});
 module.exports = router;

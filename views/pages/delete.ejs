@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <%- include ("../partials/head.ejs") %>
+    <%- include("../partials/head")%>
   </head>
   <body>
     <ul class="list">
@@ -14,6 +14,16 @@
       <li><a href="/delete">Delete Users</a></li>
       <li style="float: right"><a href="/about">About</a></li>
     </ul>
-    <h1>Welcome Home</h1>
+    <h1>Delete one user</h1>
+
+    <form action="/delete" method="POST">
+      <input
+        type="text"
+        name="delete-user"
+        class="input-user"
+        placeholder="User Name"
+      />
+      <button id="btn-register" type="submit">Delete</button>
+    </form>
   </body>
 </html>
