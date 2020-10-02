@@ -3,11 +3,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const Mongodb = require("mongodb");
 const url = "mongodb://localhost:27017";
+const db_name = "company";
 
 Mongodb.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((user) => {
     console.log("Database Connected");
-    const db = user.db("company");
+    const db = user.db(db_name);
     const companyCollection = db.collection("employ");
 
     app.set("view engine", "ejs");
