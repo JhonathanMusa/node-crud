@@ -1,51 +1,35 @@
 const express = require("express");
 const app = express();
-const Mongodb = require("mongodb");
+const MongoClient = require("mongodb");
 const URL = "mongodb://localhost:27017";
-const db_name = "company";
+const db_name = "EjemploD2";
+const db_collection = "users";
 const PORT = process.env.PORT || 8000;
 
-Mongodb.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((user) => {
-    console.log("Database Connected");
-    const db = user.db(db_name);
-    const companyCollection = db.collection("employ");
+const { findUsers } = require("./controllers/controller");
 
-    app.set("view engine", "ejs");
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: false }));
+app.route("/users").get((req, res) => {
+  MongoClient.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then((user) => {
+      console.log("Database Connected");
 
-    app.use(require("./routes/index"));
+      app.use(express.json());
+      app.use(express.urlencoded({ extended: true }));
 
-    app.post("/user", (req, res) => {
-      companyCollection
-        .insertOne(req.body)
-        .then((result) => {
-          res.redirect("/user");
-        })
-        .catch((error) => console.error(error));
-    });
+      const db = user.db(db_name);
 
-    app.post("/view", (req, res) => {
-      const query = req.body;
-      companyCollection.find(query).toArray((err, result) => {
-        if (err) throw err;
-        res.status(200).json(query);
-        res.redirect("/view");
+      // app.use(require("./routes/routes."));
+
+      // Calling the function 'findUsers()'
+      findUsers(db, db_collection, () => {
+        user.close();
       });
-    });
+    })
+    .catch((err) => console.error(err));
+});
 
-    app.post("/delete", (req, res) => {
-      companyCollection
-        .deleteOne(req.body)
-        .then((result) => {
-          res.redirect("/delete");
-        })
-        .catch((error) => console.error(error));
-    });
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
-    app.listen(PORT, () => {
-      console.log("Server running on port 8080");
-    });
-  })
-  .catch((error) => console.error(error));
+// Get all the users
