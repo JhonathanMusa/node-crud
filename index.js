@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const Mongodb = require("mongodb");
-const url = "mongodb://localhost:27017";
+const URL = "mongodb://localhost:27017";
 const db_name = "company";
+const PORT = process.env.PORT || 8000;
 
-Mongodb.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+Mongodb.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((user) => {
     console.log("Database Connected");
     const db = user.db(db_name);
@@ -43,7 +44,8 @@ Mongodb.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
         .catch((error) => console.error(error));
     });
 
-    app.listen(8080);
-    console.log("Server running on port 8080");
+    app.listen(PORT, () => {
+      console.log("Server running on port 8080");
+    });
   })
   .catch((error) => console.error(error));
