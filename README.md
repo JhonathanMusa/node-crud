@@ -1,2 +1,2 @@
-# node-simple-crud
-Simple crud with NodeJS and MongoDB
+# node-crud
+CRUD built with NodeJS and MongoDB
